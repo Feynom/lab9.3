@@ -37,8 +37,11 @@ int main()
     SetConsoleOutputCP(1251);
 
     int N;
-    cout << "Введіть кількість товарів: ";
-    cin >> N;
+    do
+    {
+        cout << "Введіть кількість товарів: ";
+        cin >> N;
+    } while (N < 1);
     Shop* S = new Shop[N];
 
     int action;
@@ -128,8 +131,11 @@ int main()
                 push_back(S, N++);
                 break;
             case 2:
-                cout << "Виберіть рядок. який потрібно видалити: ";
-                cin >> row_del;
+                do
+                {
+                    cout << "Виберіть рядок. який потрібно видалити: ";
+                    cin >> row_del;
+                } while (row_del < 0);
 
                 del(S, N--, row_del - 1);
                 break;
@@ -156,8 +162,11 @@ int main()
                     {
                     case 1:
                     case 2:
-                        cout << "Введіть рядок: ";
-                        cin >> row;
+                        do
+                        {
+                            cout << "Введіть рядок: ";
+                            cin >> row;
+                        } while (row < 0);
                         cout << endl;
                         cout << "На що замінити? " << endl;
                         cin.get();
@@ -170,8 +179,11 @@ int main()
                         break;
                     case 3:
                     case 4:
-                        cout << "Введіть рядок: ";
-                        cin >> row;
+                        do
+                        {
+                            cout << "Введіть рядок: ";
+                            cin >> row;
+                        } while (row < 0);
                         cout << endl;
                         cout << "На що замінити? " << endl;
                         cin.get();
@@ -184,11 +196,18 @@ int main()
                         break;
                     }
 
-                    cout << "Бажаєте повторити корегування? (1 - Так, 2 - Ні)" << endl;
-                    cout << "Введіть";
-                    cin >> what_to_do;
+                    do
+                    {
+                        cout << "Бажаєте повторити корегування? (1 - Так, 2 - Ні)" << endl;
+                        cout << "Введіть";
+                        cin >> what_to_do;
+                    } while (what_to_do != 1 &&
+                             what_to_do != 2);
                     cout << endl;
+
                 } while (what_to_do != 2);
+                break;
+            case 0:
                 break;
             }
             break;
